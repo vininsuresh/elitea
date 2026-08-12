@@ -8,18 +8,22 @@ test('Navigate to Client Work page from Services menu', async ({ page }) => {
     fullPage: true
   });
 
-  await page.getByRole('link', {
+  const servicesMenu = page.getByRole('link', {
     name: /services/i
-  }).click();
+  });
+  await expect(servicesMenu).toBeVisible();
+  await servicesMenu.click();
 
   await page.screenshot({
     path: 'screenshots/services-page.png',
     fullPage: true
   });
 
-  await page.getByRole('link', {
+  const clientWorkLink = page.getByRole('link', {
     name: /explore our client work/i
-  }).click();
+  });
+  await expect(clientWorkLink).toBeVisible();
+  await clientWorkLink.click();
 
   await page.screenshot({
     path: 'screenshots/client-work-page.png',
